@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <style>
+        #calculator {
+            width: 200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(85, 162, 166, 0.786);
+            border: 2px black;
+            border-radius: 10px;
+            box-shadow: 0 0 10px black;
+        }
+    </style>
+    <script>
+        let curr_inp = '';
+        let oper = '';
+        let ans_display = false;
+        function appendNum(number) {
+            if (ans_display) {
+                clear();
+            }   
+            curr_inp += number;
+            display_inp();
+        }
+        function set_Op(op) {
+            if (ans_display) {
+                ans_display = false;
+            }
+            oper = op;
+            curr_inp += ' ' + op + ' ';
+            display_inp();
+        }
+        function clr() {
+            curr_inp = '';
+            display_inp();
+        }
+        function del() {
+            curr_inp = curr_inp.slice(0, -1);
+            display_inp();
+        }
+        function calcul() {
+            if (oper && curr_inp) {
+                let ans = eval(curr_inp);
+                curr_inp = ans.toString();
+                oper = '';
+                ans_display = true;
+                display_inp();
+            }
+        }
+        function display_inp() {
+            document.getElementById("display").value = curr_inp;
+        }
+    </script>
+    </head>
+    <body style="margin-left: 10px; margin-top: 60px; text-align: center; background-color: rgba(200, 250, 253, 0.663); color: rgb(22, 139, 145);">
+        <h1><strong><u>Mini - Calculator</u></strong></h1>
+        <br><br>
+        <div id="calculator">
+            <input type="text" id="display" readonly
+            style="width: 100%; margin-bottom: 10px; padding: 10px; box-sizing: border-box; font-size: 16px;">
+            <br>
+            <button onclick="appendNum('7')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer;">7</button>
+            <button onclick="appendNum('8')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer;">8</button>
+            <button onclick="appendNum('9')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer;">9</button>
+            <button onclick="set_Op('/')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer;">/</button>
+            <br>
+            <button onclick="appendNum('4')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">4</button>
+            <button onclick="appendNum('5')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">5</button>
+            <button onclick="appendNum('6')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">6</button>
+            <button onclick="set_Op('*')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">X</button>
+            <br>
+            <button onclick="appendNum('1')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">1</button>
+            <button onclick="appendNum('2')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">2</button>
+            <button onclick="appendNum('3')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">3</button>
+            <button onclick="set_Op('-')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">-</button>
+            <br>
+            <button onclick="set_Op('.')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">.</button>
+            <button onclick="appendNum('0')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px">0</button>
+            <button onclick="set_Op('+')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">+</button>
+            <button onclick="calcul()" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">=</button>
+            <br>
+            <button onclick="set_Op('(')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">(</button>
+            <button onclick="set_Op(')')" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">)</button>
+            <button onclick="del()" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">DEL</button>
+            <button onclick="clr()" style="width: 23%; padding: 5px; border-radius: 20px; box-sizing: border-box; font-size: 16px; cursor: pointer; margin-top: 8px;">C</button>
+            <div id="ans"></div>
+        </div>
+    </body>
+</html>

@@ -3,6 +3,8 @@
 ## Author
 *Sanya Sinha*
 
+**Live Site:** https://sanyasinha11.github.io/Easy-Mini-Calculator/
+
 ### Overview
 This project is a simple mini calculator implemented using HTML, CSS, and JavaScript. The calculator performs basic arithmetic operations and includes a user-friendly interface.
 
